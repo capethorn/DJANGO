@@ -1,17 +1,5 @@
 from rest_framework.viewsets import GenericViewSet
-from rest_framework import mixins, viewsets
-
-from gym.models import Subscription
-from gym.serializers import SubscriptionSerializer
-from gym.models import OptionToSubscription
-
-class SubscriptionViewset(mixins.ListModelMixin, GenericViewSet):
-    queryset = OptionToSubscription.objects.all()
-    serializer_class = SubscriptionSerializer
-
-
-from rest_framework.viewsets import GenericViewSet
-from rest_framework import mixins, viewsets
+from rest_framework import mixins
 
 from gym.models import Subscription, Option, OptionToSubscription, AppointmentCoach, AppointmentGroup, Additionally
 from gym.serializers import SubscriptionSerializer, OptionSerializer, OptionToSubscriptionSerializer, AppointmentCoachSerializer, AppointmentGroupSerializer, AdditionallySerializer
