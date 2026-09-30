@@ -76,4 +76,4 @@ class Addres(models.Model):
         verbose_name_plural = "Адреса"
     
     def __str__(self) -> str:
-        return self.name
+        return self.addres

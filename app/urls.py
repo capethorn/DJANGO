@@ -24,6 +24,13 @@ from gym.api import SubscriptionViewset
 
 router = DefaultRouter()
 router.register("gym", SubscriptionViewset, basename="gym")
+router.register("subscription", SubscriptionViewset, basename="subscription")
+router.register("option", SubscriptionViewset, basename="option")
+router.register("option-to-subscription", SubscriptionViewset, basename="option-to-subscription")
+router.register("appointment-coach", SubscriptionViewset, basename="appointment-coach")
+router.register("appointment-group", SubscriptionViewset, basename="appointment-group")
+router.register("additionally", SubscriptionViewset, basename="additionally")
+router.register("addres", SubscriptionViewset, basename="addres")
 
 urlpatterns = [
     path('', views.ShowSubscriptionView.as_view()),
