@@ -2,6 +2,17 @@
 
 from django.db import models
 
+
+class Profile(models.Model):
+    class Role(models.IntegerChoices):
+        undefined = 0
+        client = 1
+        coach = 2
+
+    user = models.OneToOneField("auth.User", on_delete=models.CASCADE, null=True, blank=True)
+    role = models.IntegerField("Роль", choices=Role, default=Role.undefined)
+    
+
 class Subscription(models.Model):
     name = models.TextField("Название")
     price = models.IntegerField("Цена")
