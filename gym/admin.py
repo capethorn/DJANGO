@@ -1,6 +1,10 @@
 from django.contrib import admin
 
-from gym.models import Option, OptionToSubscription, Subscription, AppointmentCoach, AppointmentGroup, Additionally, Addres
+from gym.models import Option, OptionToSubscription, Profile, Subscription, AppointmentCoach, AppointmentGroup, Additionally, Addres
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(Subscription)
