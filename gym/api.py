@@ -10,6 +10,7 @@ class SubscriptionViewset(
     mixins.UpdateModelMixin,
     mixins.RetrieveModelMixin,
     mixins.ListModelMixin,
+    mixins.DestroyModelMixin,
     GenericViewSet
 ):
     queryset = Subscription.objects.all()
@@ -20,6 +21,7 @@ class OptionViewset(
     mixins.UpdateModelMixin,
     mixins.RetrieveModelMixin,
     mixins.ListModelMixin,
+    mixins.DestroyModelMixin,
     GenericViewSet
 ):
     queryset = Option.objects.all()
@@ -30,6 +32,7 @@ class OptionToSubscriptionViewset(
     mixins.UpdateModelMixin,
     mixins.RetrieveModelMixin,
     mixins.ListModelMixin,
+    mixins.DestroyModelMixin,
     GenericViewSet
 ):
     queryset = OptionToSubscription.objects.all()
@@ -40,6 +43,7 @@ class AppointmentCoachViewset(
     mixins.UpdateModelMixin,
     mixins.RetrieveModelMixin,
     mixins.ListModelMixin,
+    mixins.DestroyModelMixin,
     GenericViewSet
 ):
     queryset = AppointmentCoach.objects.all()
@@ -50,6 +54,7 @@ class AppointmentGroupViewset(
     mixins.UpdateModelMixin,
     mixins.RetrieveModelMixin,
     mixins.ListModelMixin,
+    mixins.DestroyModelMixin,
     GenericViewSet
 ):
     queryset = AppointmentGroup.objects.all()
@@ -60,6 +65,7 @@ class AdditionallyViewset(
     mixins.UpdateModelMixin,
     mixins.RetrieveModelMixin,
     mixins.ListModelMixin,
+    mixins.DestroyModelMixin,
     GenericViewSet
 ):
     queryset = Additionally.objects.all()
@@ -70,6 +76,7 @@ class AddresViewset(
     mixins.UpdateModelMixin,
     mixins.RetrieveModelMixin,
     mixins.ListModelMixin,
+    mixins.DestroyModelMixin,
     GenericViewSet
 ):
     queryset = Addres.objects.all()

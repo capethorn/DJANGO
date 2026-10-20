@@ -57,8 +57,8 @@ class OptionToSubscription(models.Model):
         return f"{self.subscription} - {self.option}"
 
 class AppointmentCoach(models.Model):
-    coach = models.TextField("Тренер")
-    user = models.TextField("Пользователь")
+    coach = models.ForeignKey(User, on_delete=models.CASCADE, related_name='coach_appointments', verbose_name="Тренер")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_appointments', verbose_name="Пользователь")
     data = models.DateTimeField("Дата и время")
 
     class Meta:
