@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from gym.models import (
-    Additionally, Addres, AppointmentCoach, AppointmentGroup, 
+    Additionally, Addres, AppointmentCoach, AppointmentGroup, AppointmentToGroup, 
     Subscription, Option, OptionToSubscription
 )
 
@@ -40,5 +40,8 @@ class AddresSerializer(serializers.ModelSerializer):
         model = Addres
         fields = ['id', 'addres']
 
-
+class AppointmentToGroupSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AppointmentToGroup
+        fields = ['id', 'user', 'group', 'data']
 

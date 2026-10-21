@@ -1,8 +1,8 @@
 from rest_framework.viewsets import GenericViewSet
 from rest_framework import mixins
 
-from gym.models import Addres, Subscription, Option, OptionToSubscription, AppointmentCoach, AppointmentGroup, Additionally
-from gym.serializers import AddresSerializer, SubscriptionSerializer, OptionSerializer, OptionToSubscriptionSerializer, AppointmentCoachSerializer, AppointmentGroupSerializer, AdditionallySerializer
+from gym.models import Addres, AppointmentToGroup, Subscription, Option, OptionToSubscription, AppointmentCoach, AppointmentGroup, Additionally
+from gym.serializers import AddresSerializer, AppointmentToGroupSerializer, SubscriptionSerializer, OptionSerializer, OptionToSubscriptionSerializer, AppointmentCoachSerializer, AppointmentGroupSerializer, AdditionallySerializer
 
 
 class SubscriptionViewset(
@@ -81,3 +81,14 @@ class AddresViewset(
 ):
     queryset = Addres.objects.all()
     serializer_class = AddresSerializer
+
+class AppointmentToGroupViewset(
+    mixins.CreateModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.ListModelMixin,
+    mixins.DestroyModelMixin,
+    GenericViewSet
+):
+    queryset = AppointmentToGroup.objects.all()
+    serializer_class = AppointmentToGroupSerializer

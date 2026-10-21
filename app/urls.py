@@ -20,7 +20,7 @@ from gym import views
 
 from rest_framework.routers import DefaultRouter
 
-from gym.api import AdditionallyViewset, AddresViewset, AppointmentCoachViewset, AppointmentGroupViewset, OptionToSubscriptionViewset, OptionViewset, SubscriptionViewset
+from gym.api import AdditionallyViewset, AddresViewset, AppointmentCoachViewset, AppointmentGroupViewset, AppointmentToGroupViewset, OptionToSubscriptionViewset, OptionViewset, SubscriptionViewset
 
 router = DefaultRouter()
 router.register("subscription", SubscriptionViewset, basename="subscription")
@@ -30,6 +30,7 @@ router.register("appointment-coach", AppointmentCoachViewset, basename="appointm
 router.register("appointment-group", AppointmentGroupViewset, basename="appointment-group")
 router.register("additionally", AdditionallyViewset, basename="additionally")
 router.register("addres", AddresViewset, basename="addres")
+router.register("appointment-to-group", AppointmentToGroupViewset, basename="appointment-to-group")
 
 urlpatterns = [
     path('', views.ShowSubscriptionView.as_view()),

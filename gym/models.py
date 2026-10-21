@@ -99,3 +99,15 @@ class Addres(models.Model):
     
     def __str__(self) -> str:
         return self.addres
+
+class AppointmentToGroup(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Пользователь")
+    group = models.ForeignKey(AppointmentGroup, on_delete=models.CASCADE, verbose_name="Групповая тренировка")
+    data = models.DateTimeField("Дата и время")
+
+    class Meta:
+        verbose_name = "Запись клиента на групповую"
+        verbose_name_plural = "Записи клиентов на групповые"
+
+    def __str__(self) -> str:
+        return f"Пользователь {self.user} -> {self.group}"
