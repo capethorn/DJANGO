@@ -38,7 +38,7 @@ class AdditionallySerializer(serializers.ModelSerializer):
 class AddresSerializer(serializers.ModelSerializer):
     class Meta:
         model = Addres
-        fields = ['id', 'addres']
+        fields = ['id', 'addres', 'image']
 
 class AppointmentToGroupSerializer(serializers.ModelSerializer):
     class Meta:

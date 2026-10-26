@@ -6,6 +6,8 @@ import Cookies from 'js-cookie';
 const items = ref([]);
 const itemToAdd = ref({});
 const itemToEdit = ref({});
+const AddresPictureRef = ref();
+const addresAddImageUrl = ref();
 
 async function fetchItems() {
   const r = await axios.get("/api/addres/");
@@ -17,10 +19,28 @@ onBeforeMount(() => {
   fetchItems();
 });
 
+async function addresAddPictureChange() {
+  addresAddImageUrl.value = URL.createObjectURL(AddresPictureRef.value.files[0])
+}
+
+
 async function onAdd() {
-  await axios.post("/api/addres/", { ...itemToAdd.value });
+  const formData = new FormData();
+
+  // вытаскиваем выбранный файл с формы через AddresPictureRef.value.files[0]
+  formData.append('image', AddresPictureRef.value.files[0]);
+
+  // явно привязываем поля из itemToAdd
+  formData.set('addres', itemToAdd.value.addres);
+
+  // ну и тут указываем в заголовке что отправляем данные с файлом
+  await axios.post("/api/addres/", formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+      }
+  });
+
   await fetchItems();
-  itemToAdd.value = {};
 }
 
 async function onRemoveClick(item) {
@@ -44,11 +64,20 @@ async function onUpdate() {
     <form @submit.prevent.stop="onAdd" class="mb-4">
       <div class="row">
         <div class="col"><div class="form-floating"><input type="text" class="form-control" v-model="itemToAdd.addres" required /><label>Адрес</label></div></div>
+        <div class="col-auto">
+        <input class="form-control" type="file" ref="AddresPictureRef" @change="addresAddPictureChange">
+        </div>
+        <div class="col-auto">
+        <img :src="addresAddImageUrl" style="max-height: 60px;" alt="">
+        </div>
         <div class="col-auto"><button class="btn btn-primary h-100">Добавить</button></div>
       </div>
     </form>
     <div v-for="item in items" :key="item.id" class="d-flex align-items-center mb-2">
       <div class="flex-grow-1">{{ item.addres }}</div>
+      <div v-show="item.image" class="me-3">
+        <img :src="item.image" style="max-height: 60px;">
+      </div>
       <button class="btn btn-success me-2" @click="onEditClick(item)" data-bs-toggle="modal" data-bs-target="#editAdrModal"><i class="bi bi-pen-fill"></i></button>
       <button class="btn btn-danger" @click="onRemoveClick(item)"><i class="bi bi-x"></i></button>
     </div>

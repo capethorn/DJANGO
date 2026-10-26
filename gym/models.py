@@ -92,6 +92,7 @@ class Additionally(models.Model):
     
 class Addres(models.Model):
     addres = models.TextField('Адрес')
+    image = models.ImageField('Изображение', null=True )
     
     class Meta:
         verbose_name = "Адрес"
