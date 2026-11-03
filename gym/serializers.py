@@ -28,7 +28,7 @@ class AppointmentCoachSerializer(serializers.ModelSerializer):
 class AppointmentGroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = AppointmentGroup
-        fields = ['id', 'name', 'capacity', 'type']
+        fields = ['id', 'name', 'capacity', 'type', 'image']
 
 class AdditionallySerializer(serializers.ModelSerializer):
     class Meta:

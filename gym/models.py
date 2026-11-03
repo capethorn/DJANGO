@@ -72,6 +72,7 @@ class AppointmentGroup(models.Model):
     name = models.TextField('Название')
     capacity = models.IntegerField('Вместимость')
     type = models.TextField('Тип')
+    image = models.ImageField('Изображение', null=True )
 
     class Meta:
         verbose_name = "Запись на групповую тренировку"
