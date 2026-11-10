@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from gym.models import (
-    Additionally, Addres, AppointmentCoach, AppointmentGroup, AppointmentToGroup, 
+    Additionally, Addres, AppointmentCoach, AppointmentGroup, AppointmentToGroup, Picture, 
     Subscription, Option, OptionToSubscription
 )
 
@@ -35,10 +35,18 @@ class AdditionallySerializer(serializers.ModelSerializer):
         model = Additionally
         fields = ['id', 'name']
 
+class PictureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Picture
+        fields = ['id', 'image']
+
 class AddresSerializer(serializers.ModelSerializer):
+    # Добавляем фиктивное поле только для чтения, чтобы отдавать готовые картинки
+    album = PictureSerializer(source='pictures', many=True, read_only=True)
+
     class Meta:
         model = Addres
-        fields = ['id', 'addres', 'image']
+        fields = ['id', 'addres', 'image', 'pictures', 'album']
 
 class AppointmentToGroupSerializer(serializers.ModelSerializer):
     class Meta:

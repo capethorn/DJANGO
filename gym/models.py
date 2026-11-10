@@ -90,10 +90,14 @@ class Additionally(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
+class Picture(models.Model):
+    image = models.ImageField("Картинка", upload_to="pictures/")
     
 class Addres(models.Model):
     addres = models.TextField('Адрес')
     image = models.ImageField('Изображение', null=True )
+    pictures = models.ManyToManyField(Picture, blank=True)
     
     class Meta:
         verbose_name = "Адрес"

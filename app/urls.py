@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 from gym import views
 from rest_framework.routers import DefaultRouter
 
-from gym.api import AdditionallyViewset, AddresViewset, AppointmentCoachViewset, AppointmentGroupViewset, AppointmentToGroupViewset, OptionToSubscriptionViewset, OptionViewset, SubscriptionViewset
+from gym.api import PictureViewset, AdditionallyViewset, AddresViewset, AppointmentCoachViewset, AppointmentGroupViewset, AppointmentToGroupViewset, OptionToSubscriptionViewset, OptionViewset, SubscriptionViewset
 
 router = DefaultRouter()
 router.register("subscription", SubscriptionViewset, basename="subscription")
@@ -33,6 +33,7 @@ router.register("appointment-group", AppointmentGroupViewset, basename="appointm
 router.register("additionally", AdditionallyViewset, basename="additionally")
 router.register("addres", AddresViewset, basename="addres")
 router.register("appointment-to-group", AppointmentToGroupViewset, basename="appointment-to-group")
+router.register("pictures", PictureViewset, basename="pictures")
 
 urlpatterns = [
     path('', views.ShowSubscriptionView.as_view()),

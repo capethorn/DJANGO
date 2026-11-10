@@ -1,8 +1,8 @@
 from rest_framework.viewsets import GenericViewSet
 from rest_framework import mixins
 
-from gym.models import Addres, AppointmentToGroup, Subscription, Option, OptionToSubscription, AppointmentCoach, AppointmentGroup, Additionally
-from gym.serializers import AddresSerializer, AppointmentToGroupSerializer, SubscriptionSerializer, OptionSerializer, OptionToSubscriptionSerializer, AppointmentCoachSerializer, AppointmentGroupSerializer, AdditionallySerializer
+from gym.models import Addres, AppointmentToGroup, Picture, Subscription, Option, OptionToSubscription, AppointmentCoach, AppointmentGroup, Additionally
+from gym.serializers import AddresSerializer, AppointmentToGroupSerializer, PictureSerializer, SubscriptionSerializer, OptionSerializer, OptionToSubscriptionSerializer, AppointmentCoachSerializer, AppointmentGroupSerializer, AdditionallySerializer
 
 
 class SubscriptionViewset(
@@ -92,3 +92,14 @@ class AppointmentToGroupViewset(
 ):
     queryset = AppointmentToGroup.objects.all()
     serializer_class = AppointmentToGroupSerializer
+
+class PictureViewset(
+    mixins.CreateModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.RetrieveModelMixin,
+    mixins.ListModelMixin,
+    mixins.DestroyModelMixin,
+    GenericViewSet
+):
+    queryset = Picture.objects.all()
+    serializer_class = PictureSerializer
